@@ -27,16 +27,16 @@ Esta aplicação é uma simulação de transações financeiras, onde possamos c
 
 ##Os repositórios são responsáveis por gerenciar e manipular os dados das classes de modelo. Eles atuam como a "camada de dados" do seu aplicativo.
 
-AccountRepository: Gerencia a criação, busca, depósito, saque e transferência entre contas.
+* ```AccountRepository:``` Gerencia a criação, busca, depósito, saque e transferência entre contas.
 
-InvestmentRepository: Gerencia a criação e manipulação de investimentos, além de vincular contas a carteiras de investimento.
+* ```InvestmentRepository:``` Gerencia a criação e manipulação de investimentos, além de vincular contas a carteiras de investimento.
 
-CommonsRepository: Contém lógicas genéricas compartilhadas, como a validação de fundos.
+* ```CommonsRepository:``` Contém lógicas genéricas compartilhadas, como a validação de fundos.
 
 
-#Passo 3: Criar a Lógica Principal (Main.java)
+#Passo 3: Criar a Lógica Principal (* ```Main.java```)
 
-##O arquivo Main.java é o ponto de entrada do programa, onde a lógica de interação com o usuário é implementada.
+##O arquivo ```Main.java``` é o ponto de entrada do programa, onde a lógica de interação com o usuário é implementada.
 
 Menu de Opções: Um loop principal com um menu que guia o usuário através de todas as funcionalidades do sistema (criar conta, depositar, transferir, etc.).
 
@@ -50,6 +50,6 @@ Tratamento de Exceções: Uso de blocos try-catch para lidar com erros, como con
 
 Tipos de Dados: Ajustamos as assinaturas dos métodos em cascata para que a comunicação entre as classes de modelo e de repositório fosse consistente.
 
-Representação de Objetos: Usamos a anotação @ToString do Lombok de forma mais precisa para que a saída no console ficasse clara e útil, exibindo apenas as informações relevantes.
+Representação de Objetos: Usamos a anotação ```@ToString``` do Lombok de forma mais precisa para que a saída no console ficasse clara e útil, exibindo apenas as informações relevantes.
 
 Lógica de Histórico: Corrigimos a forma como o histórico era coletado e exibido, agrupando as transações para mostrar o valor total.
