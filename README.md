@@ -12,6 +12,8 @@ Criamos as classes principais do sistema, seguindo os princípios de Programaç�
 
 * ```Money:``` Representa uma única unidade monetária, com uma referência a um objeto MoneyAudit para rastrear a origem da transação.
 
+![<alt-class money](https://github.com/FrankJr23/Banco-Java/blob/main/img/class%20Money.png)
+
 ##O Papel e a Importancia dessa classe em nosso projeto.
 
     Anotações do Lombok:
@@ -24,7 +26,6 @@ Criamos as classes principais do sistema, seguindo os princípios de Programaç�
         É imutável (final), ou seja, o valor de history só pode ser definido no construtor.
 
         MoneyAudit provavelmente é outra classe que guarda informações de auditoria ou histórico das movimentações de dinheiro.
-
     Construtor:
         Recebe um objeto MoneyAudit e armazena no atributo history.
 
@@ -34,8 +35,9 @@ Criamos as classes principais do sistema, seguindo os princípios de Programaç�
         *  Util como um tipo-valor no seu domínio — uma representação conceitual de “dinheiro” no sistema, ligada a auditoria.
 
 * ```MoneyAudit:``` Armazena os metadados de uma transação, como ID, descrição e data.
-
      Essa classe representa um evento de auditoria relacionado a dinheiro (```MoneyAudit``` → "auditoria de dinheiro").
+
+![<alt-class moneyAudit](https://github.com/FrankJr23/Banco-Java/blob/main/img/class%20moneyAudit.png)
 
       Composição:
       1 - UUID transactionId → identificador único da transação.
@@ -53,18 +55,18 @@ Criamos as classes principais do sistema, seguindo os princípios de Programaç�
 É a classe principal do projeto, dentro de um sistema financeiro de forma abstrata que vai ser entendida como uma classe "**Pai**", onde serve de modelo para as demais classes subsequentes. Define um contrato comum para todas as carteiras dentro do sistema, tenham as mesmas funcionalidades básicas (um exemplo de herança).
 Nesta vamos ter as caracteristicas de Abstração, Encapsulamento.
 
+![<alt-class Wallet](https://github.com/FrankJr23/Banco-Java/blob/main/img/wallet1.png)
+![<alt-class Wallet](https://github.com/FrankJr23/Banco-Java/blob/main/img/wallet2.png)
+
 Funcionalidades:
 
     * addMoney(List<Money> money): Este método permite adicionar uma lista de objetos Money à carteira. É usado principalmente para transferências entre carteiras.
-
     * addMoney(long amount, String description): Uma versão mais simples para depósitos diretos. Ele cria uma nova lista de objetos Money com base no valor (amount) e os adiciona à carteira.
-
     * reduceMoney(long amount): Retira uma quantidade específica de objetos Money da carteira, retornando-os como uma nova lista. É usado para saques ou transferências.
-
     * getFunds(): Retorna o saldo total da carteira. Em vez de armazenar o saldo como uma variável, o método calcula o valor contando o número de objetos Money na lista.
-
     * getAllMoney(): Fornece acesso direto à lista de todos os objetos Money na carteira. Isso é útil para funcionalidades como a criação do histórico de transações.
-    
+
+![<alt-class InvestmentWallet](https://github.com/FrankJr23/Banco-Java/blob/main/img/InvestWallet1.png)
 
 * ```AccountWallet:``` Herda de Wallet e representa uma conta bancária com chaves PIX.
 * ```InvestmentWallet:``` Herda de Wallet e representa uma carteira de investimento, vinculada a uma conta bancária e a um tipo de investimento.
@@ -78,7 +80,6 @@ Chaves PIX: O campo pix armazena uma lista de chaves PIX associadas à conta. Es
 Construtores: A classe tem dois construtores para diferentes cenários de criação:
 
     *   AccountWallet(final List<String> pix): Cria uma conta com um saldo inicial de zero.
-
     *   AccountWallet(final long amount, final List<String> pix): Cria uma conta com um valor inicial já depositado.
 
 No Vínculo com a Conta e o Investimento: A ```InvestmentWallet``` tem duas referências importantes:
@@ -109,11 +110,17 @@ Um segundo construtor mais genérico (InvestmentWallet(BankService serviceType, 
 
 **O arquivo ```Main.java``` é o ponto de entrada do programa, onde a lógica de interação com o usuário é implementada.**
 
+![<alt-class main](https://github.com/FrankJr23/Banco-Java/blob/main/img/main.png)
+
 Menu de Opções: Um loop principal com um menu que guia o usuário através de todas as funcionalidades do sistema (criar conta, depositar, transferir, etc.).
 
 Métodos Auxiliares: Funções privadas para cada opção do menu, que chamam os métodos dos repositórios para executar as operações.
 
+![<alt-metodosAuxiliares](https://github.com/FrankJr23/Banco-Java/blob/main/img/metAuxiliars.png)
+
 Tratamento de Exceções: Uso de blocos try-catch para lidar com erros, como contas não encontradas ou falta de fundos.
+
+![<alt-Exceptions](https://github.com/FrankJr23/Banco-Java/blob/main/img/Exceptions.png)
 
 ##Passo 4: Iterar e Refinar o Código
 
